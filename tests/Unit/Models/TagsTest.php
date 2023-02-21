@@ -3,6 +3,7 @@
 namespace Tests\Unit\Models;
 
 use PHPUnit\Framework\TestCase;
+use App\Models\Tag;
 
 class TagsTest extends TestCase
 {
@@ -14,7 +15,7 @@ class TagsTest extends TestCase
     public function test_slug()
     {
         $tag = new Tag();
-        $tag->name = 'PHP';
-        $this->assertEquals('php', $tag->slug);
+        $tag->name = 'un texto';
+        $this->assertEquals('un-texto', $tag->slug);
     }
 }

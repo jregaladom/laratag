@@ -10,6 +10,13 @@
 
 <body class="bg-gray-200 py-10">
     <div class="max-w-lg bg-white mx-auto p-5 rounded shadow">
+        @if ($errors->any())
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+            <strong class="font-bold">Error!</strong>
+            <span class="block sm:inline">{{ $errors->first() }}</span>
+        </div>
+
+        @endif
         <form action="tags" method="post" class="flex mb-4">
             @csrf
             <input type="text" name="name" id="" class="rounded-l bg-gray-200 p-4 w-full outline-none"
@@ -21,6 +28,7 @@
             @forelse( $tags as $tag )
             <tr>
                 <td class="border px-4 py-2">{{ $tag->name }}</td>
+                <td class="border px-4 py-2">{{ $tag->slug }}</td>
                 <td class="px-4 py-2">
                     <form action="tags/{{$tag->id}}" method="post">
                         @csrf
